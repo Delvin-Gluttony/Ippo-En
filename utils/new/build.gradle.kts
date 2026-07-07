@@ -7,14 +7,14 @@ val extension by tasks.registering(NewExtension::class)
 abstract class NewExtension : DefaultTask() {
     @get:Input
     @set:Option(option = "path", description = "path of the extension to generate")
-    abstract var path: String
+    abstract var modulePath: String
 
     @TaskAction
     fun create() {
         val extensionsDir = project.rootProject.layout.projectDirectory.dir("extensions").asFile
         val split = Regex("""[/\]""")
 
-        val fullPath = path
+        val fullPath = modulePath
         require(fullPath.isNotBlank()) { "path must not be blank" }
 
         val identifier = fullPath.split(split).last()
