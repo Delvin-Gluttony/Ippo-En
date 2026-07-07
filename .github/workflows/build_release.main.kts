@@ -72,7 +72,7 @@ workflow(
         env = linkedMapOf(),
         needs = listOf(assembleRelease),
         permissions = mapOf(Permission.Contents to Mode.Write),
-        `if` = """'true' == ${expr { "vars.DO_PUBLISH_REPO" }}""",
+        `if` = "${expr { vars.DO_PUBLISH_REPO }} == 'true'",
         outputs = object : JobOutputs() {},
     ) {
 
