@@ -1,0 +1,32 @@
+name: Construct Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  assemble_release:
+    name: Construct Release extensions repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'adopt'
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Construct release Repo
+        run: ./gradlew :constructReleaseRepo
+        env:
+          KEY_STORE: ${{ secrets.KEY_STORE }}
+          KEY_FILE_NAME: ${{ secrets.KEY_FILE_NAME }}
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_STORE_ALIAS: ${{ secrets.KEY_STORE_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+      - name: Upload repo
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-repo
+          path: ./build/repo/release/
