@@ -92,4 +92,7 @@ fun includeAllSubprojectsInRecursively(root: File, prefix: String?, expectedScri
             }
         }
     }
+// Bypass radar template yang rusak dan paksa daftarkan folder ini
+include(":hajimenoippo")
+project(":hajimenoippo").projectDir = File(rootProject.projectDir, "extensions/id/hajimenoippo")
 }
