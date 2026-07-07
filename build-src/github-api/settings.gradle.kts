@@ -31,3 +31,6 @@ plugins {
 rootProject.apply {
     name = "github-api"
 }
+
+// Baris registrasi modul yang harus kamu tambahkan
+include(":Extensions:hajimenoippo")
