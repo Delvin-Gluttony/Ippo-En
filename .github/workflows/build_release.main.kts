@@ -72,7 +72,7 @@ workflow(
         env = linkedMapOf(),
         needs = listOf(assembleRelease),
         permissions = mapOf(Permission.Contents to Mode.Write),
-        `if` = "${'$'}{{ vars.DO_PUBLISH_REPO == 'true' }}",
+        // Hapus baris if = ... nya sama sekali
         outputs = object : JobOutputs() {},
     ) {
 
