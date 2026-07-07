@@ -9,4 +9,5 @@ setupTachiyomiExtensionConfiguration {
     extClass = ".HajimeNoIppo"
     extVersionCode = 1
     isNsfw = false
+    apply(from = "$rootDir/common.gradle")
 }
