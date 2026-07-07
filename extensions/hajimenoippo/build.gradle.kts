@@ -1,3 +1,7 @@
+plugins {
+    id("tachiyomi.extension")
+}
+
 setupTachiyomiExtensionConfiguration {
     namespaceIdentifier = "id"
     extName = "Hajime no Ippo (Mandiri)"
